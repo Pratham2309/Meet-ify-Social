@@ -1,0 +1,18 @@
+#footer-layout nav {
+  display: flex;
+  background-color: #535151;
+  color: white;
+}
+
+#footer-layout nav div {
+  margin: 0 5px;
+}
+
+#footer-layout nav ul {
+  list-style: none;
+}
+
+#footer-layout nav a {
+  color: white;
+  text-decoration: none;
+}

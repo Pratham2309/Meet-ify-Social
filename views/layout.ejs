@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,22 @@
         <%= title %>
     </title>
     <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <%- style %>
 </head>
+
 <body>
     <%- include('_header') %>
 
-    <%- body %>
+        <main id="layout-main">
+            <%- body %>
+        </main>
+
 
     <%- include('_footer') %>
+    
     <%- script %>
 </body>
+
 </html>
