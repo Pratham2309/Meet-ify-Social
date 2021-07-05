@@ -1,6 +1,6 @@
 const User = require('../models/user')
 
-
+//lets keep it same as before(Async)
 module.exports.profile = function(req,res){
     // res.end("<h1>User Profile</h1>");
     User.findById(req.params.id, function(err,user){
@@ -54,10 +54,12 @@ module.exports.signIn = function(req,res){
 module.exports.create = function(req,res){
     //TODO Later
     if(req.body.password != req.body.confirm_password){
+        req.flash('error' , 'Password and Confirm Password does not match!');
         return res.redirect('back');
     }
     User.findOne({email : req.body.email}, function(err,user){
         if(err){
+            req.flash('error' , err);
             console.log('Error in finding user in signing up' , err);
             return;
         }
@@ -71,6 +73,7 @@ module.exports.create = function(req,res){
             });
         }
         else{
+            req.flash('error' , 'Email already registered!');
             return res.redirect('back');
         }
     });
@@ -79,10 +82,12 @@ module.exports.create = function(req,res){
 //get the sign in data
 module.exports.createSession = function(req,res){
     //TODO Later
+    req.flash('success' , 'Logged in successfully');
     return res.redirect('/');
 }
 
 module.exports.destroySession = function(req,res){
     req.logout();
+    req.flash('success' , 'You have logged out!');
     return res.redirect('/');
 }
