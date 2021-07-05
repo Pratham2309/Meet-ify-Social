@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
+
 const commentSchema  = new mongoose.Schema({
     content : {
         type : String,
         required : true
     },
+    //comment belongs to a use
     user : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'

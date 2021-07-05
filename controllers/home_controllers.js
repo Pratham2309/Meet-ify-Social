@@ -40,6 +40,7 @@ module.exports.home = async function (req, res) {
     // using asycn and await to find the above proces
     try{
         let posts = await Post.find({})
+        .sort('-createdAt')
         .populate('user')
         .populate({
             path: 'comments',
@@ -63,3 +64,14 @@ module.exports.home = async function (req, res) {
         return;
     }
 }
+
+// module.exports.actionName = function(req, res){}
+
+
+// using then
+// Post.find({}).populate('comments').then(function());
+
+// let posts = Post.find({}).populate('comments').exec();
+
+// posts.then()
+
