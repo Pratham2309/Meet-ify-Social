@@ -2,15 +2,15 @@
 
     <h1>Codeial / Profile page</h1>
 
-    <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
-
+    <img src="<%= user.avatar %>" alt="<%= user.name %>" width="200">
+    <img id="output" width="120" style="margin-left: 200px;"/>
 <% if(user.id == profile_user.id) { %>
     <!-- if user matches then show the form -->
     <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
         <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
         <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
 
-        <input type="file" name="avatar" placeholder="Profile Picture">
+        <input type="file" name="avatar" placeholder="Profile Picture" onchange="loadFile(event)">
 
         <input type="submit" value="Update">
     </form>
@@ -18,3 +18,13 @@
     <p> <%= profile_user.name %> </p>
     <p> <%= profile_user.email %> </p>
 <% } %>
+
+<script>
+    var loadFile = function(event) {
+      var output = document.getElementById('output');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+      }
+    };
+</script>
