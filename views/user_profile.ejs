@@ -2,8 +2,8 @@
 
     <h1>Codeial / Profile page</h1>
 
-    <img src="<%= user.avatar %>" alt="<%= user.name %>" width="200">
-    <img id="output" width="120" style="margin-left: 200px;"/>
+    <img src="<%= user.avatar %>" id="output" alt="<%= user.name %>" width="200">
+    <!-- <img  width="120" style="margin-left: 200px;"/> -->
 <% if(user.id == profile_user.id) { %>
     <!-- if user matches then show the form -->
     <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
