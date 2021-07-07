@@ -1,6 +1,9 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
 const commentsMailer = require('../mailers/comments_mailer');
+const queue = require('../config/kue');
+const commentEmailWorker = require('../workers/comment_email_worker');
+
 
 module.exports.create = async function (req, res) {
     // Post.findById(req.body.post, function (err, post) {
@@ -21,9 +24,10 @@ module.exports.create = async function (req, res) {
     //     }
     // });
 
-    try {
+    try{
         let post = await Post.findById(req.body.post);
-        if (post) {
+
+        if (post){
             let comment = await Comment.create({
                 content: req.body.content,
                 post: req.body.post,
@@ -32,29 +36,38 @@ module.exports.create = async function (req, res) {
 
             post.comments.push(comment);
             post.save();
-
+            
             comment = await comment.populate('user', 'name email').execPopulate();
-            commentsMailer.newComment(comment);
+            // commentsMailer.newComment(comment);
 
-            if(req.xhr){
-                // Similar for comments to fetch the user's id!
+            let job = queue.create('emails', comment).save(function(err){
+                if (err){
+                    console.log('Error in sending to the queue', err);
+                    return;
+                }
+                console.log('job enqueued', job.id);
 
+            })
+
+            if (req.xhr){
+                
+    
                 return res.status(200).json({
-                    data : {
-                        comment : comment
+                    data: {
+                        comment: comment
                     },
-                    message : "Comment Created"
+                    message: "Comment created!"
                 });
             }
 
-            req.flash('success' , 'Comment added successfully');
+
+            req.flash('success', 'Comment published!');
+
             res.redirect('/');
         }
-    }
-    catch (err) {
-        req.flash('error',err);
-        console.log("Error while cretaing a comment", err);
-        return res.redirect('back');
+    }catch(err){
+        req.flash('error', err);
+        return;
     }
 }
 
