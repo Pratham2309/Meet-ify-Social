@@ -1,0 +1,77 @@
+// CHANGE :: add styling for the chat box
+#user-chat-box{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border: 1px dashed grey;
+    height: 330px;
+	width: 280px;
+	background: white;
+	padding: 5px;
+	box-shadow: 1px 1px 1px 1px lightgrey;
+
+    #chat-messages-list{
+    	list-style: none;
+	    padding: 10px;
+	    height: 70%;
+	    background-color: white;
+	    overflow: auto;
+
+	    .other-message{
+		    text-align: left;
+		    padding: 5px;
+		    span{
+                border-radius: 10px;
+                color : white;
+		    	display: inline-block;
+	    		padding: 10px;
+		    	background-color: rgb(78, 86, 90);
+		    }
+		    
+	    }
+
+	    .self-message{
+		    text-align: right;
+		    padding: 5px;
+		   
+		    span{
+                border-radius: 10px;
+
+                color : white;
+	    		display: inline-block;
+	    		padding: 10px;
+    			background-color:rgb(18, 109, 110);
+		    }
+		   
+	    }
+
+    }
+    #chat-message-input-container{
+    	    height: 20%;
+		    width: 100%;
+		    display: flex;
+		    flex-direction: row;
+		    #chat-message-input{
+                border-radius: 10px;
+	    	    height: 50%;
+    			width: 70%;
+                background-color: rgb(157, 182, 197);
+		    }
+
+		    #send-message{
+                font-family: sans-serif;
+                border-radius: 10px;
+                margin-left : 3px;
+	    	    height: 57%;
+			    width: 30%;
+			    font-size: 20px;
+			    color: white;
+			    border: none;
+			    background: #6acc6a;
+                &:hover {
+                    background-color: #8be78b;
+                }
+		    }
+            
+	    }
+}
