@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod_start": "set CODEIAL_ENVIRONMENT=production&&nodemon index.js",
+    "prod": "cross-env NODE_ENV=production nodemon index.js"
   },
   "author": "Pratham Bansal",
   "license": "ISC",
@@ -14,6 +16,7 @@
     "connect-mongo": "^4.4.1",
     "cookie-parser": "^1.4.5",
     "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
@@ -29,5 +32,8 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "socket.io": "^4.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
