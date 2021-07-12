@@ -1,0 +1,17 @@
+#home-container {
+  display: flex;
+  background-color: #c2def0;
+}
+
+#home-container #feed-posts {
+  width: 70%;
+  padding: 10px;
+}
+
+#home-container #user-friends {
+  width: 30%;
+  padding: 10px;
+  border-left: 1px solid lightgrey;
+  min-height: 1000px;
+  height: 100%;
+}

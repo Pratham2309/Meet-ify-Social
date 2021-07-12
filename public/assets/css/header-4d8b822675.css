@@ -1,0 +1,28 @@
+#layout-header nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 40px;
+  align-items: center;
+  background-color: #1a7aa7;
+}
+
+#layout-header nav #logo-name {
+  margin: 5px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+#layout-header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+#layout-header nav ul li {
+  margin-right: 10px;
+}
+
+#layout-header nav a {
+  text-decoration: none;
+  color: white;
+}
