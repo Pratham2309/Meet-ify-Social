@@ -11,10 +11,6 @@ const accessLogStream = rfs.createStream('access.log' , {
     path : logDirectory
 });
 
-
-if (dotenv.error) {
-    throw result.error
-  }
 const development = {
     name : 'development',
     asset_path : '/assets',
