@@ -1,30 +1,60 @@
 <link rel="stylesheet" href="<%= assetPath('css/user_profile.css') %>">
 
-    <h1>Codeial / Profile page</h1>
+<div id="container">
+    <div>
+        <div id="nme">
+            <h1>Profile Page</h1>
+        </div>
 
-    <img src="<%= user.avatar %>" id="output" alt="<%= user.name %>" width="200">
+    </div>
+
+
     <!-- <img  width="120" style="margin-left: 200px;"/> -->
-<% if(user.id == profile_user.id) { %>
-    <!-- if user matches then show the form -->
-    <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
-        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
-        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
+    <% if(user.id==profile_user.id) { %>
+        <img src="<%= user.avatar %>" id="output" alt="<%= user.name %>" width="200">
 
-        <input type="file" name="avatar" placeholder="Profile Picture" onchange="loadFile(event)">
+        <!-- if user matches then show the form -->
+        <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
+            <div>
+                <p>Name <span><input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>"
+                            required></span>
+                </p>
 
-        <input type="submit" value="Update">
-    </form>
-<% } else{ %>
-    <p> <%= profile_user.name %> </p>
-    <p> <%= profile_user.email %> </p>
-<% } %>
+            </div>
+            <div>
+                <p>Email <span><input type="email" name="email" placeholder="Your Email"
+                            value="<%= profile_user.email %>" required></span>
+                </p>
+
+            </div>
+            <div>
+                <p>Upload Pic<span><input type="file" name="avatar" placeholder="Profile Picture"
+                            onchange="loadFile(event)"></span>
+                </p>
+
+            </div>
+
+            <div>
+                <input id="btn" type="submit" value="Update">
+            </div>
+        </form>
+        <% } else{ %>
+            <img src="<%= profile_user.avatar %>" id="output" alt="<%= user.name %>" width="200">
+            <p>
+                <%= profile_user.name %>
+            </p>
+            <p>
+                <%= profile_user.email %>
+            </p>
+            <% } %>
+</div>
 
 <script>
-    var loadFile = function(event) {
-      var output = document.getElementById('output');
-      output.src = URL.createObjectURL(event.target.files[0]);
-      output.onload = function() {
-        URL.revokeObjectURL(output.src) // free memory
-      }
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
     };
 </script>

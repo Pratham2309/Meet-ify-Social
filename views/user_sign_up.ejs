@@ -1,13 +1,28 @@
-<h1>Sign Up</h1>
+<link rel="stylesheet" href="<%= assetPath('css/user_sign_up.css') %>">
 
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="Sign Up">
-</form>
-
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+<div id="centerr">
+    <div class="container" id="container">
+        <div class="form-container sign-in-container">
+            <form action="/users/create" method="POST">
+                <h1 class="spec">Sign Up</h1>
+                <div class="social-container">
+                    <a href="/users/auth/google" class="social a-tag"><i class="fab fa-google-plus-g"></i></a>
+                </div>
+                <span>or create your account</span>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <button>Sign UP</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1 class="spec">Hello, Friend!</h1>
+                    <p class="p-tag">Enter your personal details and start journey with us!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

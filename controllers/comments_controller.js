@@ -38,7 +38,7 @@ module.exports.create = async function (req, res) {
             post.save();
             
             comment = await comment.populate('user', 'name email').execPopulate();
-            commentsMailer.newComment(comment);
+            // commentsMailer.newComment(comment);
 
 
             //for using radis uncomment the below part
