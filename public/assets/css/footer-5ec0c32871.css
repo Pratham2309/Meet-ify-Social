@@ -1,10 +1,12 @@
 #footer-layout nav {
   display: flex;
-  background-color: #535151;
+  background-color: #0b3b52;
   color: white;
+  justify-content: space-between;
 }
 
 #footer-layout nav div {
+  display: flex;
   margin: 0 5px;
 }
 
@@ -15,4 +17,9 @@
 #footer-layout nav a {
   color: white;
   text-decoration: none;
+}
+
+#footer-layout nav #here {
+  margin-right: 30px;
+  margin-top: 10px;
 }
