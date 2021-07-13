@@ -6,7 +6,7 @@ const app = express();
 
 require('./config/view-helpers')(app);
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 //used for session cookie
@@ -22,10 +22,10 @@ const  flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
 //setup the chat server to be used with socket.io
-const chatServer = require('http').createServer(app);
-const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
-console.log('chat server is listening on port 5000');
+// const chatServer = require('http').createServer(app);
+// const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+// chatServer.listen(5000);
+// console.log('chat server is listening on port 5000');
 const path = require('path');
 
 if(env.name=='development'){
