@@ -1,3 +1,37 @@
 body {
     background-color: lightblue;
-}
+  }
+  
+  #nme {
+    background-color: rgb(141, 215, 224);
+    border-radius: 30px;
+    padding : 0 15px;
+  }
+  
+  #nme h1 {
+    color :rgb(35, 59, 41)
+  }
+  
+  #output {
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  #container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  form div {
+    margin-left : 100px;
+  }
+  
+  form span {
+    margin-left : 10px;
+  }
+  
+  #btn {
+    margin-left : 90px;
+  }
